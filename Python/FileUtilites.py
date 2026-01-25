@@ -20,3 +20,24 @@ def file_info(filepath):
         info['Extension'] = ext or 'None'
     
     return info
+
+def list_directory(path='.'):
+    """List contents of a directory with details"""
+    print(f"📁 Contents of: {os.path.abspath(path)}")
+    print("-"*60)
+    
+    items = os.listdir(path)
+    items.sort()
+    
+    for item in items:
+        item_path = os.path.join(path, item)
+        is_dir = os.path.isdir(item_path)
+        
+        if is_dir:
+            print(f"📂 {item}/")
+        else:
+            size = os.path.getsize(item_path)
+            size_str = f"{size:,} bytes" if size < 1024 else f"{size/1024:.1f} KB"
+            print(f"📄 {item:30} ({size_str})")
+    
+    print(f"\nTotal: {len(items)} items")
