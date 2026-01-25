@@ -41,3 +41,16 @@ def list_directory(path='.'):
             print(f"📄 {item:30} ({size_str})")
     
     print(f"\nTotal: {len(items)} items")
+
+
+# Test the utilities
+print("📋 File Utilities Demo")
+print("="*60)
+list_directory()
+
+# Get info about current file
+current_file = __file__ if '__file__' in globals() else 'test.py'
+info = file_info(current_file)
+print(f"\n📊 File Info for: {current_file}")
+for key, value in info.items():
+    print(f"{key:15}: {value}")
