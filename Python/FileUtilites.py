@@ -14,3 +14,9 @@ def file_info(filepath):
         'Modified': datetime.datetime.fromtimestamp(stats.st_mtime),
         'Type': 'Directory' if os.path.isdir(filepath) else 'File'
     }
+
+     if os.path.isfile(filepath):
+        _, ext = os.path.splitext(filepath)
+        info['Extension'] = ext or 'None'
+    
+    return info
